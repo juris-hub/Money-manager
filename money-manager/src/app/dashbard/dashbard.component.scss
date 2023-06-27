@@ -1,0 +1,15 @@
+.container {
+  display: flex;
+  justify-content: center;
+}
+
+.change-mode {
+  display: flex;
+  gap: 22em;
+  justify-content: center;
+
+  :hover {
+    text-decoration: underline;
+    cursor: pointer;
+  }
+}

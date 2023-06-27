@@ -1,0 +1,40 @@
+<form [formGroup]="expensesForm" class="form">
+  <label class="amount-label"> Amount: </label>
+  <p-inputNumber
+    class="amount"
+    mode="currency"
+    currency="EUR"
+    formControlName="amount"
+  ></p-inputNumber>
+  <label class="account-label">Account: </label>
+  <p-dropdown
+    class="account"
+    formControlName="account"
+    [options]="accounts"
+    optionLabel="name"
+  >
+  </p-dropdown>
+  <label class="categories-label">Categories: </label>
+  <p-dropdown
+    class="categories"
+    formArrayName="categories"
+    [options]=""
+    optionLabel=""
+  >
+  </p-dropdown>
+  <label class="date-label">Date: </label>
+  <p-calendar
+    [showIcon]="true"
+    class="date"
+    formControlName="date"
+    optionLabel="name"
+  >
+  </p-calendar>
+  <label class="comment-label">Comment: </label>
+  <textarea
+    pInputTextarea
+    rows="5"
+    cols="30"
+    formControlName="comment"
+  ></textarea>
+</form>

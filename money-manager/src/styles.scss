@@ -1,0 +1,9 @@
+/* You can add global styles to this file, and also import other style files */
+:host ::ng-deep .p-dropdown {
+  width: 13rem ;
+}
+:host ::ng-deep .p-hidden-accessible {
+  display: none ;
+}
+
+
