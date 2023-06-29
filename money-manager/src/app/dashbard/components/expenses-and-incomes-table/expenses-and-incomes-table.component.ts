@@ -1,0 +1,57 @@
+import { AsyncPipe, CommonModule } from '@angular/common';
+import { Component, OnInit, inject } from '@angular/core';
+import { ButtonModule } from 'primeng/button';
+import { TableModule } from 'primeng/table';
+import { Observable } from 'rxjs';
+import { TransactionsService } from 'src/app/services/transactions.service';
+import { Expense } from 'src/app/shared/expense.model';
+import { ToastModule } from 'primeng/toast';
+import { MessageService } from 'primeng/api';
+
+@Component({
+  standalone: true,
+  imports: [TableModule, AsyncPipe, CommonModule, ButtonModule, ToastModule],
+  selector: 'app-expenses-and-incomes-table',
+  templateUrl: './expenses-and-incomes-table.component.html',
+  styleUrls: ['./expenses-and-incomes-table.component.scss'],
+  providers: [MessageService],
+})
+export class ExpensesAndIncomesTableComponent implements OnInit {
+  transactionsService = inject(TransactionsService);
+  data$!: Observable<Expense[]>;
+
+  columns = [
+    { name: 'Amount', prop: 'amount' },
+    { name: 'Account', prop: 'account' },
+    { name: 'Categories', prop: 'categories' },
+    { name: 'Date', prop: 'date' },
+    { name: 'Comment', prop: 'comment' },
+  ];
+
+  constructor(private messageService: MessageService) {}
+
+  ngOnInit(): void {
+    this.data$ = this.transactionsService.getExpenses();
+  }
+
+  onDeleteExpense(id: string) {
+    this.transactionsService.deleteExpense(id).subscribe({
+      complete: () => {
+        //temporary way of refreshing data
+        this.messageService.add({
+          severity: 'success',
+          summary: 'Success',
+          detail: 'You expense has been deleted !',
+        });
+        this.data$ = this.transactionsService.getExpenses();
+      },
+      error: (err: any) => {
+        this.messageService.add({
+          severity: 'error',
+          summary: err.error.error,
+          detail: err.message,
+        });
+      },
+    });
+  }
+}

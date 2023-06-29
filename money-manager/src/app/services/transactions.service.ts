@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Subject } from 'rxjs';
+import { Subject, map } from 'rxjs';
 import { Expense } from '../shared/expense.model';
 import { Income } from '../shared/income.model';
 import { HttpClient } from '@angular/common/http';
@@ -18,6 +18,30 @@ export class TransactionsService {
         'https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses.json',
         expense
       )
-      .subscribe(console.log);
+      .subscribe();
+  }
+
+  getExpenses() {
+    return this.http
+      .get<{ [key: string]: Expense }>(
+        'https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses.json'
+      )
+      .pipe(
+        map((response) => {
+          const expensesArray = [];
+          for (const key in response) {
+            if (response.hasOwnProperty(key)) {
+              expensesArray.push({ ...response[key], id: key });
+            }
+          }
+          return expensesArray;
+        })
+      );
+  }
+
+  deleteExpense(id: string) {
+    return this.http.delete(
+      `https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses/${id}.json`
+    );
   }
 }

@@ -1,10 +1,11 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
+import { ExpensesAndIncomesTableComponent } from '../expenses-and-incomes-table/expenses-and-incomes-table.component';
 
 @Component({
   standalone: true,
-  imports: [ButtonModule],
+  imports: [ButtonModule, ExpensesAndIncomesTableComponent],
   selector: 'app-expenses',
   templateUrl: './expenses.component.html',
   styleUrls: ['./expenses.component.scss'],
