@@ -1,0 +1,48 @@
+<p-table [columns]="columns" [value]="(data$ | async) ?? []">
+  <ng-template pTemplate="header" let-columns>
+    <tr>
+      <th *ngFor="let col of columns">
+        {{ col.name }}
+      </th>
+      <th></th>
+    </tr>
+  </ng-template>
+  <ng-template pTemplate="body" let-row>
+    <tr>
+      <td>
+        {{ row.amount | currency : "EUR" }}
+      </td>
+      <td>
+        {{ row.account.name }}
+      </td>
+      <td>
+        {{ row.categories }}
+      </td>
+      <td>
+        {{ row.date | date : "dd.MM.yyyy HH:mm" }}
+      </td>
+      <td>
+        {{ row.comment }}
+      </td>
+      <td class="table-actions">
+        <span class="p-buttonset">
+          <button
+            pButton
+            label="Edit"
+            icon="pi pi-pencil"
+            class="p-button-sm p-button-outlined"
+          ></button>
+          <button
+            (click)="onDeleteExpense(row.id)"
+            pButton
+            label="Delete"
+            icon="pi pi-trash"
+            class="p-button-sm p-button-outlined"
+          ></button>
+        </span>
+      </td>
+    </tr>
+  </ng-template>
+</p-table>
+
+<p-toast position="bottom-center"></p-toast>
