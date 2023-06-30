@@ -13,7 +13,7 @@
         {{ row.amount | currency : "EUR" }}
       </td>
       <td>
-        {{ row.account.name }}
+        {{ row.account | json }}
       </td>
       <td>
         {{ row.categories }}

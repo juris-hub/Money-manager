@@ -13,7 +13,6 @@ export class CreateExpenseComponent {
   transactionsService = inject(TransactionsService);
 
   onCreateExpense(event: any) {
-    console.log(event);
     this.transactionsService.createAndStoreExpense(event);
   }
 }

@@ -7,19 +7,13 @@
     formControlName="amount"
   ></p-inputNumber>
   <label class="account-label">Account: </label>
-  <p-dropdown
-    class="account"
-    formControlName="account"
-    [options]="accounts"
-    optionLabel="name"
-  >
+  <p-dropdown class="account" formControlName="account" [options]="accounts">
   </p-dropdown>
   <label class="categories-label">Categories: </label>
   <p-dropdown
     class="categories"
-    formArrayName="categories"
-    [options]=""
-    optionLabel=""
+    formControlName="categories"
+    [options]="categories"
   >
   </p-dropdown>
   <label class="date-label">Date: </label>

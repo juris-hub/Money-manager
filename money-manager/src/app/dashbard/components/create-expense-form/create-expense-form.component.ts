@@ -13,6 +13,7 @@ import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
+import { Categories } from 'src/app/shared/categories';
 
 @Component({
   standalone: true,
@@ -32,18 +33,19 @@ import { InputTextareaModule } from 'primeng/inputtextarea';
 })
 export class CreateExpenseFormComponent {
   //accounts need to be added then used in this dropdown
-  accounts = [{ name: 'Visa account' }, { name: 'Diners account' }];
+  accounts = ['Visa account', 'Diners account'];
   expensesForm!: FormGroup;
+  categories = Categories;
 
   constructor(private fb: FormBuilder) {}
 
   ngOnInit(): void {
     this.expensesForm = this.fb.group({
-      amount: new FormControl(),
-      account: new FormControl(),
-      categories: new FormArray([]),
+      amount: new FormControl(''),
+      account: new FormControl(''),
+      categories: new FormControl(''),
       date: new FormControl(new Date()),
-      comment: new FormControl(),
+      comment: new FormControl(''),
     });
   }
 }
