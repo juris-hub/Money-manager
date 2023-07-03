@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { ChartModule } from 'primeng/chart';
 import { Observable, map, tap } from 'rxjs';
 import { TransactionsService } from 'src/app/services/transactions.service';
@@ -16,6 +16,9 @@ export class ExpensesAndIncomesGraphComponent implements OnInit {
   transactionsService = inject(TransactionsService);
 
   data$!: Observable<any>;
+
+  getExpenses$: any;
+
   options: any;
 
   ngOnInit(): void {

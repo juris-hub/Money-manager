@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { ExpensesAndIncomesTableComponent } from '../expenses-and-incomes-table/expenses-and-incomes-table.component';
 import { ExpensesAndIncomesGraphComponent } from '../expenses-and-incomes-graph/expenses-and-incomes-graph.component';
+import { PeriodPickerComponent } from '../period-picker/period-picker.component';
 
 @Component({
   standalone: true,
@@ -10,6 +11,7 @@ import { ExpensesAndIncomesGraphComponent } from '../expenses-and-incomes-graph/
     ButtonModule,
     ExpensesAndIncomesTableComponent,
     ExpensesAndIncomesGraphComponent,
+    PeriodPickerComponent,
   ],
   selector: 'app-expenses',
   templateUrl: './expenses.component.html',
