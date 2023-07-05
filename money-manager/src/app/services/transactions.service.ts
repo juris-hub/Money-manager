@@ -1,7 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Observable, Subject, map } from 'rxjs';
+import { map } from 'rxjs';
 import { Expense } from '../shared/expense.model';
-import { Income } from '../shared/income.model';
 import { HttpClient } from '@angular/common/http';
 import {
   endOfMonth,
@@ -15,8 +14,6 @@ import {
   providedIn: 'root',
 })
 export class TransactionsService {
-  periodForExpensesSubject = new Subject<string>();
-
   constructor(private http: HttpClient) {}
 
   createAndStoreExpense(expense: Expense) {

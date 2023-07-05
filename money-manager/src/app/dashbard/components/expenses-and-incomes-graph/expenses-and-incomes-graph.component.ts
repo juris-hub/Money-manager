@@ -1,5 +1,13 @@
 import { CommonModule } from '@angular/common';
-import { Component, Input, OnInit, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  inject,
+} from '@angular/core';
 import { ChartModule } from 'primeng/chart';
 import { Observable, map, tap } from 'rxjs';
 import { TransactionsService } from 'src/app/services/transactions.service';
@@ -15,43 +23,13 @@ import { Expense } from 'src/app/shared/expense.model';
 export class ExpensesAndIncomesGraphComponent implements OnInit {
   transactionsService = inject(TransactionsService);
 
-  data$!: Observable<any>;
-
-  getExpenses$: any;
+  @Input() data!: Expense[];
 
   options: any;
 
   ngOnInit(): void {
     const documentStyle = getComputedStyle(document.documentElement);
     const textColor = documentStyle.getPropertyValue('--text-color');
-    this.data$ = this.transactionsService.getExpenses().pipe(
-      map((expenses: Expense[]) => {
-        const dataByCategory = expenses.reduce((accumulator: any, expense) => {
-          const { categories, amount } = expense;
-
-          if (accumulator.hasOwnProperty(categories)) {
-            accumulator[categories] += amount;
-          } else {
-            accumulator[categories] = amount;
-          }
-
-          return accumulator;
-        }, {});
-
-        const labels = Object.keys(dataByCategory);
-        const data = Object.values(dataByCategory);
-
-        return {
-          labels: labels,
-          datasets: [
-            {
-              label: 'Cost',
-              data: data,
-            },
-          ],
-        };
-      })
-    );
 
     this.options = {
       cutout: '60%',

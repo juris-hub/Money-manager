@@ -2,7 +2,9 @@ import { CommonModule } from '@angular/common';
 import {
   Component,
   ElementRef,
+  EventEmitter,
   OnInit,
+  Output,
   ViewChild,
   inject,
 } from '@angular/core';
@@ -21,6 +23,7 @@ import { Expense } from 'src/app/shared/expense.model';
 export class PeriodPickerComponent implements OnInit {
   @ViewChild('periodPicker', { static: true }) periodPicker!: TabView;
 
+  @Output() tabId = new EventEmitter<string>();
   data$!: Observable<Expense[]>;
 
   transactionsService = inject(TransactionsService);
@@ -30,13 +33,13 @@ export class PeriodPickerComponent implements OnInit {
   getCorrectPeriodData() {
     this.periodPicker.tabs.forEach((tab) => {
       if (tab._header === 'Day' && tab._selected === true) {
-        this.data$ = this.transactionsService.getTodayExpenses();
+        this.tabId.emit('Day');
       }
       if (tab._header === 'Week' && tab._selected === true) {
-        this.data$ = this.transactionsService.getWeekExpenses();
+        this.tabId.emit('Week');
       }
       if (tab._header === 'Month' && tab._selected === true) {
-        this.data$ = this.transactionsService.getMonthExpenses();
+        this.tabId.emit('Month');
       }
     });
   }
