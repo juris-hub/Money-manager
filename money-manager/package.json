@@ -1,6 +1,7 @@
 {
   "name": "money-manager",
   "version": "0.0.0",
+  "type":"module",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -19,6 +20,7 @@
     "@angular/platform-browser-dynamic": "^16.1.0",
     "@angular/router": "^16.1.0",
     "chart.js": "^4.3.0",
+    "date-fns": "^2.30.0",
     "primeicons": "^6.0.1",
     "primeng": "^16.0.2",
     "rxjs": "~7.8.0",

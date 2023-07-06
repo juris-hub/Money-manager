@@ -1,19 +1,15 @@
 <div class="container">
-  <div class="choose-period">
-    <div class="period">
-      <a>Day</a>
-      <a>Week</a>
-      <a>Month</a>
-      <a>Year</a>
-      <a>Set period</a>
-    </div>
+  <div class="period-picker">
+    <app-period-picker (tabId)="getGraphData($event)"></app-period-picker>
   </div>
-  <div class="date-picker"></div>
   <div class="graph">
-    <app-expenses-and-incomes-graph></app-expenses-and-incomes-graph>
+    <app-expenses-and-incomes-graph [data]="graphData$ | async">
+    </app-expenses-and-incomes-graph>
   </div>
   <div class="data">
-    <app-expenses-and-incomes-table></app-expenses-and-incomes-table>
+    <app-expenses-and-incomes-table
+      [data]="tableData$ | async"
+    ></app-expenses-and-incomes-table>
   </div>
   <div class="action-buttons">
     <p-button

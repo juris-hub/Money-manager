@@ -1,5 +1,5 @@
 import { AsyncPipe, CommonModule } from '@angular/common';
-import { Component, OnInit, inject } from '@angular/core';
+import { Component, Input, OnInit, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { Observable } from 'rxjs';
@@ -18,7 +18,7 @@ import { MessageService } from 'primeng/api';
 })
 export class ExpensesAndIncomesTableComponent implements OnInit {
   transactionsService = inject(TransactionsService);
-  data$!: Observable<Expense[]>;
+  @Input() data!: Expense[];
 
   columns = [
     { name: 'Amount', prop: 'amount' },
@@ -30,20 +30,16 @@ export class ExpensesAndIncomesTableComponent implements OnInit {
 
   constructor(private messageService: MessageService) {}
 
-  ngOnInit(): void {
-    this.data$ = this.transactionsService.getExpenses();
-  }
+  ngOnInit(): void {}
 
   onDeleteExpense(id: string) {
     this.transactionsService.deleteExpense(id).subscribe({
       complete: () => {
-        //temporary way of refreshing data
         this.messageService.add({
           severity: 'success',
           summary: 'Success',
           detail: 'You expense has been deleted !',
         });
-        this.data$ = this.transactionsService.getExpenses();
       },
       error: (err: any) => {
         this.messageService.add({
