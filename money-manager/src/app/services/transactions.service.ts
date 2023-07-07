@@ -32,7 +32,7 @@ export class TransactionsService {
       )
       .pipe(
         map((response) => {
-          const expensesArray = [];
+          let expensesArray: Array<Expense> = new Array<Expense>();
           for (const key in response) {
             if (response.hasOwnProperty(key)) {
               expensesArray.push({ ...response[key], id: key });
@@ -51,7 +51,7 @@ export class TransactionsService {
       .pipe(
         map((response) => {
           let startDate = startOfToday().toDateString();
-          const expensesArray = [];
+          let expensesArray: Array<Expense> = new Array<Expense>();
           for (const key in response) {
             if (response.hasOwnProperty(key)) {
               new Date(response[key].date).toDateString() === startDate
@@ -71,7 +71,7 @@ export class TransactionsService {
       )
       .pipe(
         map((response) => {
-          const expensesArray = [];
+          let expensesArray: Array<Expense> = new Array<Expense>();
           for (const key in response) {
             let responseDate = +new Date(response[key].date);
             let startDate = +new Date(
@@ -96,7 +96,7 @@ export class TransactionsService {
       )
       .pipe(
         map((response) => {
-          const expensesArray = [];
+          let expensesArray: Array<Expense> = new Array<Expense>();
           for (const key in response) {
             let responseDate = +new Date(response[key].date);
             let startDate = +new Date(startOfMonth(Date.now()));

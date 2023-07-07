@@ -14,6 +14,7 @@ import { Observable, map } from 'rxjs';
 import { TransactionsService } from 'src/app/services/transactions.service';
 import { CommonModule } from '@angular/common';
 import { Expense } from 'src/app/shared/expense.model';
+import { NoDataFetchedComponent } from 'src/app/shared/no-data-fetched/no-data-fetched.component';
 
 @Component({
   standalone: true,
@@ -23,6 +24,7 @@ import { Expense } from 'src/app/shared/expense.model';
     ExpensesAndIncomesGraphComponent,
     PeriodPickerComponent,
     CommonModule,
+    NoDataFetchedComponent,
   ],
   selector: 'app-expenses',
   templateUrl: './expenses.component.html',
