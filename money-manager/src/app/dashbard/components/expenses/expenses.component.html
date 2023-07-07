@@ -16,13 +16,6 @@
       [data]="tableData$ | async"
     ></app-expenses-and-incomes-table>
   </div>
-  <div class="action-buttons">
-    <p-button
-      (onClick)="OnAddExpense()"
-      icon="pi pi-plus"
-      styleClass=" p-button-rounded p-button-outlined"
-    ></p-button>
-  </div>
 </div>
 
 <ng-template #noData>

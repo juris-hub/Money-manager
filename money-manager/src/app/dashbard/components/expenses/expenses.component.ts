@@ -5,8 +5,6 @@ import {
   OnInit,
   inject,
 } from '@angular/core';
-import { Router } from '@angular/router';
-import { ButtonModule } from 'primeng/button';
 import { ExpensesAndIncomesTableComponent } from '../expenses-and-incomes-table/expenses-and-incomes-table.component';
 import { ExpensesAndIncomesGraphComponent } from '../expenses-and-incomes-graph/expenses-and-incomes-graph.component';
 import { PeriodPickerComponent } from '../period-picker/period-picker.component';
@@ -19,7 +17,6 @@ import { NoDataFetchedComponent } from 'src/app/shared/no-data-fetched/no-data-f
 @Component({
   standalone: true,
   imports: [
-    ButtonModule,
     ExpensesAndIncomesTableComponent,
     ExpensesAndIncomesGraphComponent,
     PeriodPickerComponent,
@@ -36,11 +33,7 @@ export class ExpensesComponent implements OnInit {
   tableData$!: Observable<any>;
   transactionService = inject(TransactionsService);
 
-  constructor(private router: Router) {}
-
-  OnAddExpense() {
-    this.router.navigate(['create-expense']);
-  }
+  constructor() {}
 
   ngOnInit(): void {
     this.tableData$ = this.transactionService.getExpenses();
