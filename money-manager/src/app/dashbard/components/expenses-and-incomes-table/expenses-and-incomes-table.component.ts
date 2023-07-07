@@ -2,11 +2,11 @@ import { AsyncPipe, CommonModule } from '@angular/common';
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
-import { Observable } from 'rxjs';
 import { TransactionsService } from 'src/app/services/transactions.service';
 import { Expense } from 'src/app/shared/expense.model';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
+import { Route, Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -28,7 +28,7 @@ export class ExpensesAndIncomesTableComponent implements OnInit {
     { name: 'Comment', prop: 'comment' },
   ];
 
-  constructor(private messageService: MessageService) {}
+  constructor(private messageService: MessageService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -49,5 +49,9 @@ export class ExpensesAndIncomesTableComponent implements OnInit {
         });
       },
     });
+  }
+
+  onAddExpense() {
+    this.router.navigate(['create-expense']);
   }
 }

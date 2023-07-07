@@ -16,15 +16,12 @@
 .graph {
   display: flex;
   justify-content: center;
+  align-items: center;
   grid-area : 3 / 1 / 4 / 2;
+  height: 400px;
 }
 
 .data {
   grid-area : 4 / 1 / 5 / 2;
 }
 
-.action-buttons {
-  display: flex;
-  align-items: center;
-  grid-area: 3 / 1 / 4 / 2;
-}

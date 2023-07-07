@@ -2,9 +2,20 @@
   <ng-template pTemplate="header" let-columns>
     <tr>
       <th *ngFor="let col of columns">
-        {{ col.name }}
+        <div class="headers">
+          {{ col.name }}
+        </div>
       </th>
-      <th></th>
+      <th>
+        <div class="table-actions">
+          <p-button
+            label="Add"
+            (onClick)="onAddExpense()"
+            icon="pi pi-plus"
+            styleClass="p-button-outlined p-button-sm"
+          ></p-button>
+        </div>
+      </th>
     </tr>
   </ng-template>
   <ng-template pTemplate="body" let-row>
