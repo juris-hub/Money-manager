@@ -1,12 +1,5 @@
-import { Component } from '@angular/core';
-import {
-  FormArray,
-  FormBuilder,
-  FormControl,
-  FormGroup,
-  FormsModule,
-  ReactiveFormsModule,
-} from '@angular/forms';
+import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
+import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
 import { CommonModule } from '@angular/common';
@@ -18,7 +11,6 @@ import { Categories } from 'src/app/shared/categories';
 @Component({
   standalone: true,
   imports: [
-    FormsModule,
     ReactiveFormsModule,
     InputNumberModule,
     DropdownModule,
@@ -31,21 +23,25 @@ import { Categories } from 'src/app/shared/categories';
   templateUrl: './create-expense-form.component.html',
   styleUrls: ['./create-expense-form.component.scss'],
 })
-export class CreateExpenseFormComponent {
-  //accounts need to be added then used in this dropdown
+export class CreateExpenseFormComponent implements OnChanges {
+  @Input() values: any;
   accounts = ['Visa account', 'Diners account'];
-  expensesForm!: FormGroup;
   categories = Categories;
+
+  expensesForm = this.fb.group({
+    amount: '',
+    account: '',
+    categories: '',
+    date: new Date(),
+    comment: '',
+  });
 
   constructor(private fb: FormBuilder) {}
 
-  ngOnInit(): void {
-    this.expensesForm = this.fb.group({
-      amount: new FormControl(''),
-      account: new FormControl(''),
-      categories: new FormControl(''),
-      date: new FormControl(new Date()),
-      comment: new FormControl(''),
-    });
+  ngOnChanges(changes: SimpleChanges): void {
+    if (changes['values'].currentValue) {
+      this.expensesForm.patchValue(changes['values'].currentValue);
+    }
   }
+  ngOnInit(): void {}
 }

@@ -1,1 +1,5 @@
-<p>edit-expense works!</p>
+<div class="container">
+  <app-create-expense-form
+    [values]="formValues$ | async"
+  ></app-create-expense-form>
+</div>

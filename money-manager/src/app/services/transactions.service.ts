@@ -112,6 +112,12 @@ export class TransactionsService {
       );
   }
 
+  getExpense(id: string) {
+    return this.http.get<Expense>(
+      `https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses/${id}.json`
+    );
+  }
+
   deleteExpense(id: string) {
     return this.http.delete(
       `https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses/${id}.json`

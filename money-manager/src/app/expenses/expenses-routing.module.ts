@@ -10,7 +10,7 @@ const expenseRoutes: Routes = [
     component: ExpensesComponent,
   },
   { path: 'add', component: CreateExpenseComponent },
-  { path: ':id', component: EditExpenseComponent },
+  { path: ':id/edit', component: EditExpenseComponent },
 ];
 
 @NgModule({ imports: [RouterModule.forChild(expenseRoutes)] })
