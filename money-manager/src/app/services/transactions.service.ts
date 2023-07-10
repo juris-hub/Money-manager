@@ -119,12 +119,10 @@ export class TransactionsService {
   }
 
   updateExpense(id: string, expense: Expense) {
-    return this.http
-      .patch<Expense>(
-        `https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses/${id}.json`,
-        expense
-      )
-      .subscribe();
+    return this.http.put<Expense>(
+      `https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses/${id}.json`,
+      expense
+    );
   }
 
   deleteExpense(id: string) {

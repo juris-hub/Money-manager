@@ -1,7 +1,7 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { CreateExpenseFormComponent } from '../../components/create-expense-form/create-expense-form.component';
 import { TransactionsService } from 'src/app/services/transactions.service';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Expense } from 'src/app/shared/expense.model';
 import { Observable, map, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
@@ -17,6 +17,7 @@ import { ButtonModule } from 'primeng/button';
 export class EditExpenseComponent implements OnInit {
   transactionsService = inject(TransactionsService);
   route = inject(ActivatedRoute);
+  router = inject(Router);
 
   formValues$!: Observable<Expense>;
 
@@ -37,6 +38,10 @@ export class EditExpenseComponent implements OnInit {
 
   onUpdateExpense(expenseValues: any) {
     console.log(expenseValues);
-    this.transactionsService.updateExpense(this.id, expenseValues);
+    this.transactionsService.updateExpense(this.id, expenseValues).subscribe({
+      next: () => {
+        this.router.navigate(['/expenses']);
+      },
+    });
   }
 }
