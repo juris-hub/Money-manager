@@ -1,5 +1,12 @@
 <div class="container">
   <app-create-expense-form
     [values]="formValues$ | async"
+    #formValue
   ></app-create-expense-form>
+
+  <p-button
+    label="Submit"
+    styleClass="p-button-outlined"
+    (onClick)="onUpdateExpense(formValue.expensesForm.value)"
+  ></p-button>
 </div>

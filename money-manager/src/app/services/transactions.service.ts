@@ -16,15 +16,6 @@ import {
 export class TransactionsService {
   constructor(private http: HttpClient) {}
 
-  createAndStoreExpense(expense: Expense) {
-    this.http
-      .post<Expense>(
-        'https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses.json',
-        expense
-      )
-      .subscribe();
-  }
-
   getExpenses() {
     return this.http
       .get<{ [key: string]: Expense }>(
@@ -112,10 +103,28 @@ export class TransactionsService {
       );
   }
 
+  createAndStoreExpense(expense: Expense) {
+    this.http
+      .post<Expense>(
+        'https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses.json',
+        expense
+      )
+      .subscribe();
+  }
+
   getExpense(id: string) {
     return this.http.get<Expense>(
       `https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses/${id}.json`
     );
+  }
+
+  updateExpense(id: string, expense: Expense) {
+    return this.http
+      .patch<Expense>(
+        `https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses/${id}.json`,
+        expense
+      )
+      .subscribe();
   }
 
   deleteExpense(id: string) {
