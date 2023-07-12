@@ -2,6 +2,7 @@ import { Component, inject } from '@angular/core';
 import { CreateExpenseFormComponent } from '../../components/create-expense-form/create-expense-form.component';
 import { TransactionsService } from 'src/app/services/transactions.service';
 import { ButtonModule } from 'primeng/button';
+import { Router } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -10,9 +11,14 @@ import { ButtonModule } from 'primeng/button';
   styleUrls: ['./create-expense.component.scss'],
 })
 export class CreateExpenseComponent {
-  transactionsService = inject(TransactionsService);
+  private transactionsService = inject(TransactionsService);
+  private router = inject(Router);
 
-  onCreateExpense(event: any) {
-    this.transactionsService.createAndStoreExpense(event);
+  onCreateExpense(expenseValues: Object) {
+    this.transactionsService.createAndStoreExpense(expenseValues).subscribe({
+      next: () => {
+        this.router.navigate(['/expenses']);
+      },
+    });
   }
 }
