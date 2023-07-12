@@ -2,10 +2,10 @@ import { Component, OnInit, inject } from '@angular/core';
 import { CreateExpenseFormComponent } from '../../components/create-expense-form/create-expense-form.component';
 import { TransactionsService } from 'src/app/services/transactions.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Expense } from 'src/app/shared/expense.model';
 import { Observable, map, tap } from 'rxjs';
 import { CommonModule } from '@angular/common';
 import { ButtonModule } from 'primeng/button';
+import { Expense } from 'src/app/shared/models/expense.model';
 
 @Component({
   standalone: true,

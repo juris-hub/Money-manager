@@ -1,12 +1,13 @@
 import { Component, Input, OnChanges, SimpleChanges } from '@angular/core';
-import { FormBuilder, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { InputNumberModule } from 'primeng/inputnumber';
 import { DropdownModule } from 'primeng/dropdown';
 import { CommonModule } from '@angular/common';
 import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
-import { Categories } from 'src/app/shared/categories';
+import { Categories } from 'src/app/shared/models/categories';
+import { Accounts } from 'src/app/shared/models/accounts';
 
 @Component({
   standalone: true,
@@ -25,15 +26,15 @@ import { Categories } from 'src/app/shared/categories';
 })
 export class CreateExpenseFormComponent implements OnChanges {
   @Input() values: any;
-  accounts = ['Visa account', 'Diners account'];
+  accounts = Accounts;
   categories = Categories;
 
   expensesForm = this.fb.group({
-    amount: '',
-    account: '',
-    categories: '',
-    date: new Date(),
-    comment: '',
+    amount: [null, [Validators.required, Validators.min(0)]],
+    account: [null, [Validators.required]],
+    categories: [null, [Validators.required]],
+    date: [new Date(), [Validators.required]],
+    comment: [''],
   });
 
   constructor(private fb: FormBuilder) {}

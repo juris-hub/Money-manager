@@ -11,7 +11,7 @@ import {
 import { TabView, TabViewModule } from 'primeng/tabview';
 import { Observable } from 'rxjs';
 import { TransactionsService } from 'src/app/services/transactions.service';
-import { Expense } from 'src/app/shared/expense.model';
+import { Expense } from 'src/app/shared/models/expense.model';
 
 @Component({
   standalone: true,

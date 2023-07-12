@@ -7,13 +7,20 @@
     formControlName="amount"
   ></p-inputNumber>
   <label class="account-label">Account: </label>
-  <p-dropdown class="account" formControlName="account" [options]="accounts">
+  <p-dropdown
+    class="account"
+    formControlName="account"
+    [options]="accounts"
+    placeholder="Select an account"
+  >
   </p-dropdown>
   <label class="categories-label">Categories: </label>
   <p-dropdown
     class="categories"
     formControlName="categories"
     [options]="categories"
+    placeholder="Select a category"
+    [filter]="true"
   >
   </p-dropdown>
   <label class="date-label">Date: </label>
@@ -27,6 +34,7 @@
   <label class="comment-label">Comment: </label>
   <textarea
     pInputTextarea
+    [autoResize]="true"
     rows="5"
     cols="30"
     formControlName="comment"

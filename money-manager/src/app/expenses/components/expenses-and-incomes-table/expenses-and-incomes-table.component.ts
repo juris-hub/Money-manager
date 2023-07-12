@@ -3,10 +3,10 @@ import { Component, Input, OnInit, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { TransactionsService } from 'src/app/services/transactions.service';
-import { Expense } from 'src/app/shared/expense.model';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
 import { Router, RouterModule } from '@angular/router';
+import { Expense } from 'src/app/shared/models/expense.model';
 
 @Component({
   standalone: true,

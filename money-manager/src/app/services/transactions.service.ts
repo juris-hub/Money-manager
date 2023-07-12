@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { map } from 'rxjs';
-import { Expense } from '../shared/expense.model';
 import { HttpClient } from '@angular/common/http';
 import {
   endOfMonth,
@@ -9,6 +8,7 @@ import {
   startOfToday,
   startOfWeek,
 } from 'date-fns';
+import { Expense } from '../shared/models/expense.model';
 
 @Injectable({
   providedIn: 'root',
@@ -103,8 +103,8 @@ export class TransactionsService {
       );
   }
 
-  createAndStoreExpense(expense: Expense) {
-    this.http.post<Expense>(
+  createAndStoreExpense(expense: Object) {
+    return this.http.post<Expense>(
       'https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses.json',
       expense
     );

@@ -9,7 +9,7 @@ import {
 import { Observable, map } from 'rxjs';
 import { TransactionsService } from 'src/app/services/transactions.service';
 import { CommonModule } from '@angular/common';
-import { Expense } from 'src/app/shared/expense.model';
+import { Expense } from 'src/app/shared/models/expense.model';
 import { NoDataFetchedComponent } from 'src/app/shared/no-data-fetched/no-data-fetched.component';
 import { ExpensesAndIncomesTableComponent } from './components/expenses-and-incomes-table/expenses-and-incomes-table.component';
 import { ExpensesAndIncomesGraphComponent } from './components/expenses-and-incomes-graph/expenses-and-incomes-graph.component';
