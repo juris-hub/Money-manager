@@ -104,12 +104,10 @@ export class TransactionsService {
   }
 
   createAndStoreExpense(expense: Expense) {
-    this.http
-      .post<Expense>(
-        'https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses.json',
-        expense
-      )
-      .subscribe();
+    this.http.post<Expense>(
+      'https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses.json',
+      expense
+    );
   }
 
   getExpense(id: string) {
@@ -118,7 +116,7 @@ export class TransactionsService {
     );
   }
 
-  updateExpense(id: string, expense: Expense) {
+  updateExpense(id: string, expense: Object) {
     return this.http.put<Expense>(
       `https://money-manager-8f2ca-default-rtdb.europe-west1.firebasedatabase.app/expenses/${id}.json`,
       expense

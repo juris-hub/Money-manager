@@ -36,8 +36,7 @@ export class EditExpenseComponent implements OnInit {
     );
   }
 
-  onUpdateExpense(expenseValues: any) {
-    console.log(expenseValues);
+  onUpdateExpense(expenseValues: Object) {
     this.transactionsService.updateExpense(this.id, expenseValues).subscribe({
       next: () => {
         this.router.navigate(['/expenses']);
