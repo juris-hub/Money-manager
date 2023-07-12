@@ -5,14 +5,16 @@ import {
   OnInit,
   inject,
 } from '@angular/core';
-import { ExpensesAndIncomesTableComponent } from '../expenses-and-incomes-table/expenses-and-incomes-table.component';
-import { ExpensesAndIncomesGraphComponent } from '../expenses-and-incomes-graph/expenses-and-incomes-graph.component';
-import { PeriodPickerComponent } from '../period-picker/period-picker.component';
+
 import { Observable, map } from 'rxjs';
 import { TransactionsService } from 'src/app/services/transactions.service';
 import { CommonModule } from '@angular/common';
 import { Expense } from 'src/app/shared/expense.model';
 import { NoDataFetchedComponent } from 'src/app/shared/no-data-fetched/no-data-fetched.component';
+import { ExpensesAndIncomesTableComponent } from './components/expenses-and-incomes-table/expenses-and-incomes-table.component';
+import { ExpensesAndIncomesGraphComponent } from './components/expenses-and-incomes-graph/expenses-and-incomes-graph.component';
+import { PeriodPickerComponent } from './components/period-picker/period-picker.component';
+import { RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
@@ -22,6 +24,7 @@ import { NoDataFetchedComponent } from 'src/app/shared/no-data-fetched/no-data-f
     PeriodPickerComponent,
     CommonModule,
     NoDataFetchedComponent,
+    RouterModule,
   ],
   selector: 'app-expenses',
   templateUrl: './expenses.component.html',

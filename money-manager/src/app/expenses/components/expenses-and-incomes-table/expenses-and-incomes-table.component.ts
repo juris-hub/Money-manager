@@ -1,4 +1,4 @@
-import { AsyncPipe, CommonModule } from '@angular/common';
+import { CommonModule } from '@angular/common';
 import { Component, Input, OnInit, inject } from '@angular/core';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
@@ -6,11 +6,11 @@ import { TransactionsService } from 'src/app/services/transactions.service';
 import { Expense } from 'src/app/shared/expense.model';
 import { ToastModule } from 'primeng/toast';
 import { MessageService } from 'primeng/api';
-import { Route, Router } from '@angular/router';
+import { Router, RouterModule } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [TableModule, AsyncPipe, CommonModule, ButtonModule, ToastModule],
+  imports: [TableModule, RouterModule, CommonModule, ButtonModule, ToastModule],
   selector: 'app-expenses-and-incomes-table',
   templateUrl: './expenses-and-incomes-table.component.html',
   styleUrls: ['./expenses-and-incomes-table.component.scss'],
@@ -49,9 +49,5 @@ export class ExpensesAndIncomesTableComponent implements OnInit {
         });
       },
     });
-  }
-
-  onAddExpense() {
-    this.router.navigate(['create-expense']);
   }
 }

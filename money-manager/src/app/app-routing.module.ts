@@ -1,16 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { AppComponent } from './app.component';
+import { IncomesComponent } from './expenses/components/incomes/incomes.component';
 
 const routes: Routes = [
   { path: '', component: AppComponent },
+
   {
-    path: 'dashboard',
+    path: 'expenses',
     loadChildren: () =>
-      import('./dashbard/dashboard-routing.module').then(
-        (m) => m.DashboardRoutingModule
+      import('./expenses/expenses-routing.module').then(
+        (m) => m.ExpensesRoutingModule
       ),
   },
+  { path: 'incomes', component: IncomesComponent },
 ];
 
 @NgModule({

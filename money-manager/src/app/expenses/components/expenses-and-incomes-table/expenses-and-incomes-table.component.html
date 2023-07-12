@@ -10,7 +10,7 @@
         <div class="table-actions">
           <p-button
             label="Add"
-            (onClick)="onAddExpense()"
+            [routerLink]="['add']"
             icon="pi pi-plus"
             styleClass="p-button-outlined p-button-sm"
           ></p-button>
@@ -30,7 +30,7 @@
         {{ row.categories }}
       </td>
       <td>
-        {{ row.date | date : "dd.MM.yyyy HH:mm" }}
+        {{ row.date | date : "dd.MM.yyyy" }}
       </td>
       <td>
         {{ row.comment }}
@@ -39,6 +39,7 @@
         <span class="p-buttonset">
           <button
             pButton
+            [routerLink]="[row.id, 'edit']"
             label="Edit"
             icon="pi pi-pencil"
             class="p-button-sm p-button-outlined"
