@@ -1,8 +1,7 @@
-<div class="menu">
-  <a [routerLink]="['/expenses']">Dashboard</a>
-  <a routerLink="dashboard">Accounts</a>
-  <a routerLink="dashboard">Categories</a>
-  <a routerLink="dashboard">Graphs</a>
-</div>
+<div class="layout">
+  <div class="menu">
+    <app-sidebar></app-sidebar>
+  </div>
 
-<router-outlet></router-outlet>
+  <router-outlet class="main-content"></router-outlet>
+</div>
