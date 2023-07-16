@@ -1,19 +1,27 @@
-<div class="menu-buttons">
+<div class="sidebar-buttons">
   <p-button
     [routerLink]="['/expenses']"
+    [routerLinkActive]="['button-active']"
     icon="pi pi-chart-pie"
-    styleClass="p-button-rounded p-button-text"
+    styleClass="p-button-rounded p-button-text p-button-secondary"
+    label="Expenses"
   ></p-button>
   <p-button
+    [routerLinkActive]="['button-active']"
     icon="pi pi-wallet"
-    styleClass="p-button-rounded p-button-text"
+    styleClass="p-button-rounded p-button-text p-button-secondary"
+    label="Accounts"
   ></p-button>
   <p-button
-    icon="pi pi-check"
-    styleClass="p-button-rounded p-button-text"
+    [routerLinkActive]="['button-active']"
+    icon="pi pi-list"
+    styleClass="p-button-rounded p-button-text p-button-secondary"
+    label="Graphs"
   ></p-button>
   <p-button
-    icon="pi pi-check"
-    styleClass="p-button-rounded p-button-text"
+    [routerLinkActive]="['button-active']"
+    icon="pi pi-cog"
+    styleClass="p-button-rounded p-button-text p-button-secondary"
+    label="Settings"
   ></p-button>
 </div>

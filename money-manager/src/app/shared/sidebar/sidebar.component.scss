@@ -1,5 +1,21 @@
-.menu-buttons{
+.sidebar-buttons{
   display: flex;
   flex-direction: column;
-  align-items: center;
+  align-items: flex-start;
+  height: 100%;
+  margin-top: 30px;
+}
+
+.sidebar-buttons ::ng-deep button{
+  box-shadow: none !important;
+}
+
+.button-active  ::ng-deep .p-button.p-button-secondary{
+  color: #3B82F6;
+}
+
+.sidebar-buttons p-button:hover{
+  ::ng-deep .p-button.p-button-secondary{
+    color: #3B82F6;
+  }
 }
