@@ -1,20 +1,25 @@
-<div class="container">
-  <div class="period-picker">
-    <app-period-picker (tabId)="getGraphData($event)"></app-period-picker>
+<div class="layout">
+  <div class="sidebar">
+    <app-sidebar></app-sidebar>
   </div>
-  <ng-container *ngIf="graphData$ | async as data">
-    <div class="graph">
-      <app-expenses-and-incomes-graph
-        *ngIf="data.datasets[0].data.length > 0; else noData"
-        [data]="data"
-      >
-      </app-expenses-and-incomes-graph>
+  <div class="container">
+    <div class="period-picker">
+      <app-period-picker (tabId)="getGraphData($event)"></app-period-picker>
     </div>
-  </ng-container>
-  <div class="data">
-    <app-expenses-and-incomes-table
-      [data]="tableData$ | async"
-    ></app-expenses-and-incomes-table>
+    <ng-container *ngIf="graphData$ | async as data">
+      <div class="graph">
+        <app-expenses-and-incomes-graph
+          *ngIf="data.datasets[0].data.length > 0; else noData"
+          [data]="data"
+        >
+        </app-expenses-and-incomes-graph>
+      </div>
+    </ng-container>
+    <div class="data">
+      <app-expenses-and-incomes-table
+        [data]="tableData$ | async"
+      ></app-expenses-and-incomes-table>
+    </div>
   </div>
 </div>
 

@@ -1,7 +1,6 @@
 import {
   ChangeDetectionStrategy,
   Component,
-  Input,
   OnInit,
   inject,
 } from '@angular/core';
@@ -15,6 +14,7 @@ import { ExpensesAndIncomesTableComponent } from './components/expenses-and-inco
 import { ExpensesAndIncomesGraphComponent } from './components/expenses-and-incomes-graph/expenses-and-incomes-graph.component';
 import { PeriodPickerComponent } from './components/period-picker/period-picker.component';
 import { RouterModule } from '@angular/router';
+import { SidebarComponent } from '../shared/sidebar/sidebar.component';
 
 @Component({
   standalone: true,
@@ -25,6 +25,7 @@ import { RouterModule } from '@angular/router';
     CommonModule,
     NoDataFetchedComponent,
     RouterModule,
+    SidebarComponent,
   ],
   selector: 'app-expenses',
   templateUrl: './expenses.component.html',
