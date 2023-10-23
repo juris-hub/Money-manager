@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { SidebarComponent } from '../shared/sidebar/sidebar.component';
 import { AccountsSummaryComponent } from './components/accounts-summary/accounts-summary.component';
+import { RouterOutlet } from '@angular/router';
 
 @Component({
   standalone: true,
-  imports: [SidebarComponent, AccountsSummaryComponent],
+  imports: [AccountsSummaryComponent, RouterOutlet],
   selector: 'app-accounts',
   templateUrl: './accounts.component.html',
   styleUrls: ['./accounts.component.scss'],

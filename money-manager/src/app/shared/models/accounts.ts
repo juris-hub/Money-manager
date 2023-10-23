@@ -1,1 +1,4 @@
-export const Accounts: string[] = ['Visa account', 'Diners account'];
+export interface Account {
+  totalAmount: number;
+  accountName: string;
+}

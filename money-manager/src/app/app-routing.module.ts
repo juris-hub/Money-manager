@@ -9,12 +9,14 @@ const routes: Routes = [
   {
     path: 'expenses',
     loadChildren: () =>
-      import('./expenses/expenses-routing.module').then(
-        (m) => m.ExpensesRoutingModule
-      ),
+      import('./expenses/expenses.routes').then((m) => m.EXPENSE_ROUTES),
   },
   { path: 'incomes', component: IncomesComponent },
-  { path: 'accounts', component: AccountsComponent },
+  {
+    path: 'accounts',
+    loadChildren: () =>
+      import('./accounts/accounts.routes').then((m) => m.ACCOUNT_ROUTES),
+  },
 ];
 
 @NgModule({

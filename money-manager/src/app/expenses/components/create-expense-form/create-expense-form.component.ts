@@ -7,7 +7,6 @@ import { InputTextModule } from 'primeng/inputtext';
 import { CalendarModule } from 'primeng/calendar';
 import { InputTextareaModule } from 'primeng/inputtextarea';
 import { Categories } from 'src/app/shared/models/categories';
-import { Accounts } from 'src/app/shared/models/accounts';
 
 @Component({
   standalone: true,
@@ -26,7 +25,6 @@ import { Accounts } from 'src/app/shared/models/accounts';
 })
 export class CreateExpenseFormComponent implements OnChanges {
   @Input() values: any;
-  accounts = Accounts;
   categories = Categories;
 
   expensesForm = this.fb.group({
